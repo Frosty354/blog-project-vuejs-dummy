@@ -6,6 +6,7 @@ import store from './store'
 
 
 const routes=[
+    {path:'/', redirect:'/login'},
     {path:'/login',component:Authenticate},
     {path:'/signup', component:Signup},
     {path: '/blogs', component: Blogs, meta: { requiresAuth: true }},
