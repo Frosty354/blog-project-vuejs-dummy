@@ -18,7 +18,7 @@ const router= createRouter({
 
 router.beforeEach((to, from, next) => {
     if (to.matched.some((record) => record.meta.requiresAuth)) {
-      // Check if the user is authenticated (replace this with your authentication logic)
+      // Check if the user is authenticated
       const isAuthenticated = store.state.isAuthenticated; /* check from vuex state if the user is authenticated */
   
       if (isAuthenticated) {

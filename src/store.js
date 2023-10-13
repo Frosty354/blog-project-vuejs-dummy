@@ -20,6 +20,20 @@ const store = createStore({
       state.user = userData;  // updated on login
       state.isAuthenticated = true;
     },
+    resetUser(state) { 
+      // called on logout
+      state.user = {
+        id: 0,
+        username: '',
+        email: '',
+        firstName: '',
+        lastName: '',
+        gender: '',
+        image: '',
+        token: '',
+      };
+      state.isAuthenticated = false;
+    },
   },
   actions: {
     async login({ commit }, loginData) {
@@ -43,6 +57,9 @@ const store = createStore({
         console.error('Error during login:', error);
         return false;
       }
+    },
+    logout({ commit }) {
+      commit('resetUser'); // call reset user
     },
   },
   

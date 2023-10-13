@@ -1,6 +1,9 @@
 <template>
-    <div>
+    <div class="blogs-header">
         <h1>Blogs</h1>
+        <div class="top-right">
+        <button @click="logout" class="logout-button">Logout</button>
+      </div>
     </div>
     <div>
       <div class="tab-buttons">
@@ -66,6 +69,9 @@
   
   <script>
   import store from '../store';
+  import router from '../router';
+  import { mapActions } from 'vuex';
+
   export default {
     data() {
       return {
@@ -135,15 +141,32 @@
         console.log(error)
       }
       
+    },
+    ...mapActions(['logout']),
+    logout(){
+      router.push('/login')
+      
     }
   },
   };
   </script>
   
   <style scoped>
+  .blogs-header{
+    display: flex;
+    justify-content: space-between;
+  }
   .tab-buttons {
     display: flex;
   }
+
+  .logout-button {
+  background-color: #f00;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
   
   .tab-buttons button {
     border: 1px solid #ccc;
